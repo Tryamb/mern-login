@@ -3,7 +3,7 @@ const express = require('express');
 const connectDB = require('./config/db');
 const cors = require('cors');
 
-//connectDB();
+connectDB();
 const errorHandler = require('./middleware/error');
 
 const app = express();
