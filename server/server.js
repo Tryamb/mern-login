@@ -10,9 +10,11 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors(
-  origin:["https://mern-login-inci.vercel.app"],
-  methods:["POST","GET"],
-  credentials:true
+  {
+    origin: "https://mern-login-inci.vercel.app",
+    methods: ["POST", "GET"],
+    credentials: true
+  }
 ));
 app.use(express.json());
 app.use('/api/auth', require('./routes/auth'));
