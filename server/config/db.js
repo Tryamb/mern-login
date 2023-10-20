@@ -7,6 +7,7 @@ const connectDB = async () => {
     useFindAndModify: true,
   });
   console.log('Mongodb connected');
+  return 10;
 };
 
 module.exports = connectDB;
