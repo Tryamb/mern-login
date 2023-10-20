@@ -32,13 +32,16 @@ const RegisterScreen = ({ history }) => {
       return setError('Passwords do not match');
     }
     try {
-      const { data } = await axios.post(
+      const response = await axios.post(
         'http://localhost:5000/api/auth/register',
         { username, email, password },
         config
       );
-      localStorage.setItem('authToken', data.token);
-      history.push('/');
+    
+      // Display the success message from the response
+      alert(response.data.message);
+      // localStorage.setItem('authToken', data.token);
+      // history.push('/');
     } catch (error) {
       setError(error.response.data.error);
       setTimeout(() => {

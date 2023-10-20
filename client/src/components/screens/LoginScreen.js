@@ -31,7 +31,7 @@ const LoginScreen = ({ history }) => {
         'http://localhost:5000/api/auth/login',
         { email, password },
         config
-      );
+      )
       localStorage.setItem('authToken', data.token);
       console.log(data.token)
       history.push('/');

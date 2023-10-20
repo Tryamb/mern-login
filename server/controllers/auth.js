@@ -2,20 +2,27 @@ const User = require('../models/User');
 const ErrorResponse = require('../utils/errorResponse');
 const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
+const jwt = require("jsonwebtoken");
 
 exports.register = async (req, res, next) => {
   const { username, email, password } = req.body;
+  
   try {
     const user = await User.create({
       username,
       email,
       password,
     });
-    sendToken(user, 201, res);
+
+    res.status(200).send({
+      message: "User Created Successfully"
+    });
+
   } catch (error) {
     next(error);
   }
 };
+
 
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;
@@ -31,7 +38,21 @@ exports.login = async (req, res, next) => {
     if (!isMatch) {
       return next(new ErrorResponse('Invalid Credentials', 401));
     }
-    sendToken(user, 200, res);
+
+    
+    const token = jwt.sign(
+      {
+        userId: user._id,
+        userEmail: user.email,
+      },
+      "RANDOM-TOKEN",
+      { expiresIn: "24h" }
+    );
+    res.status(200).send({
+      message: "Login Successful",
+      email: user.email,
+      token,
+    });
   } catch (error) {
     next(error);
   }
@@ -90,9 +111,4 @@ exports.resetPassword = async (req, res, next) => {
   } catch (error) {
     next(error);
   }
-};
-
-const sendToken = (user, statusCode, res) => {
-  const token = user.getSignedToken();
-  res.status(statusCode).json({ success: true, token });
 };
