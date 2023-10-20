@@ -10,7 +10,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 app.use(cors(
-  origin:["https://mern-login-iota.vercel.app"],
+  origin:["https://mern-login-inci.vercel.app"],
   methods:["POST","GET"],
   credentials:true
 ));
