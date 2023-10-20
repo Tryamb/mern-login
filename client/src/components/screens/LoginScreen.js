@@ -28,7 +28,7 @@ const LoginScreen = ({ history }) => {
 
     try {
       const { data } = await axios.post(
-        'http://localhost:5000/api/auth/login',
+        'https://mern-login-iota.vercel.app/api/auth/login',
         { email, password },
         config
       )
