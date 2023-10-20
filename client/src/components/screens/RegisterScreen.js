@@ -33,7 +33,7 @@ const RegisterScreen = ({ history }) => {
     }
     try {
       const response = await axios.post(
-        'http://localhost:5000/api/auth/register',
+        'https://mern-login-iota.vercel.app/api/auth/register',
         { username, email, password },
         config
       );
