@@ -41,7 +41,7 @@ const PrivateScreen = ({ history }) => {
     <>
       <div style={{ background: 'black', color: 'white' }}>{privateData}</div>
       <button onClick={logoutHandler}>Logout</button>
-      <iframe src="#" style={{ width: '100%', height: '500px' }}></iframe>
+      // <iframe src="#" style={{ width: '100%', height: '500px' }}></iframe>
     </>
   );
 };
