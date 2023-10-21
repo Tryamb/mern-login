@@ -23,7 +23,7 @@ const PrivateScreen = ({ history }) => {
       };
       try {
         const { data } = await axios.get(
-          'http://localhost:5000/api/private',
+          'https://mern-login-iota.vercel.app/api/private',
           config
         );
         setPrivateData(data.data);
