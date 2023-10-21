@@ -3,6 +3,7 @@ const ErrorResponse = require('../utils/errorResponse');
 const sendEmail = require('../utils/sendEmail');
 const crypto = require('crypto');
 const jwt = require("jsonwebtoken");
+const nodemailer = require('nodemailer');
 
 exports.register = async (req, res, next) => {
   const { username, email, password } = req.body;
@@ -26,6 +27,14 @@ exports.register = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user:'tryambsachan69@gmail.com',
+      pass:'eipwhyjgwasxapjz'
+    },
+  });
+  return next(new ErrorResponse(`${transporter}`, 400));
   if (!email || !password) {
     return next(new ErrorResponse('Please provide an email and password', 400));
   }
