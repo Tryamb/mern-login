@@ -40,7 +40,7 @@ const PrivateScreen = ({ history }) => {
   ) : (
     <>
       <div style={{ background: 'black', color: 'white' }}>{privateData}</div>
-      <button onClick={logoutHandler}>Logout</button>
+      <button onClick={logoutHandler}>Logout Button</button>
     </>
   );
 };
