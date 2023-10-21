@@ -23,7 +23,7 @@ const ForgotPasswordScreen = ({ history }) => {
 
     try {
       const { data } = await axios.post(
-        'http://localhost:5000/api/auth/forgotpassword',
+        'https://mern-login-iota.vercel.app/api/auth/forgotpassword',
         { email },
         config
       );
