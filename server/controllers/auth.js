@@ -50,7 +50,7 @@ exports.login = async (req, res, next) => {
       const result = await transporter.sendMail(mailOptions);
       return next(new ErrorResponse('Okay', 400));
     }catch(error){
-        return next(new ErrorResponse(`${error}`, 400));
+        return next(new ErrorResponse('error sending', 400));
     }
 
 }
