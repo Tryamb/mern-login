@@ -71,7 +71,7 @@ exports.forgotPassword = async (req, res, next) => {
     const message = `<h1>You have requested a password reset</h1><p>Please go to this link to reset your password</p><a href=${resetUrl} clicktracking=off>${resetUrl}</a>`;
     try {
       await sendEmail({
-        to: user.email,
+        to: email,
         subject: 'Password Reset Request',
         text: message,
       });
