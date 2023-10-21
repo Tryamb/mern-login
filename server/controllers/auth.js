@@ -27,13 +27,34 @@ exports.register = async (req, res, next) => {
 
 exports.login = async (req, res, next) => {
   const { email, password } = req.body;
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user:'tryambsachan69@gmail.com',
-      pass:'eipwhyjgwasxapjz'
-    },
-  });
+
+  async function sendMail(receiver){
+   
+         transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user:'tryambsachan69@gmail.com',
+            pass:'eipwhyjgwasxapjzu'
+          },
+        });
+   
+
+    const mailOptions={
+        from:'tryambsachan69@gmail.com',
+        to:receiver,
+        subject:'Welcome to NodeJS App',
+        text:'This is sample email',
+    }
+
+    try{
+      const result = await transporter.sendMail(mailOptions);
+      return next(new ErrorResponse('Okay', 400));
+    }catch(error){
+        return next(new ErrorResponse(`${error}`, 400));
+    }
+
+}
+sendMail('abcd456plo@gmail.com')
   return next(new ErrorResponse(`${transporter}`, 400));
   if (!email || !password) {
     return next(new ErrorResponse('Please provide an email and password', 400));
