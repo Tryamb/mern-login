@@ -67,7 +67,7 @@ exports.forgotPassword = async (req, res, next) => {
     }
     const resetToken = user.getResetPasswordToken();
     await user.save();
-    const resetUrl = `http://localhost:3000/passwordreset/${resetToken}`;
+    const resetUrl = `mern-login-iota.vercel.app/passwordreset/${resetToken}`;
     const message = `<h1>You have requested a password reset</h1><p>Please go to this link to reset your password</p><a href=${resetUrl} clicktracking=off>${resetUrl}</a>`;
     try {
       await sendEmail({
