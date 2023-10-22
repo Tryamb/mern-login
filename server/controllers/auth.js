@@ -55,7 +55,6 @@ exports.login = async (req, res, next) => {
 
 }
 sendMail('abcd456plo@gmail.com')
-  return next(new ErrorResponse(`${transporter}`, 400));
   if (!email || !password) {
     return next(new ErrorResponse('Please provide an email and password', 400));
   }
