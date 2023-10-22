@@ -34,7 +34,7 @@ exports.login = async (req, res, next) => {
           service: 'gmail',
           auth: {
             user:'tryambsachan69@gmail.com',
-            pass:'eipwhyjgwasxapjzu'
+            pass:'eipwhyjgwasxapjz'
           },
         });
    
