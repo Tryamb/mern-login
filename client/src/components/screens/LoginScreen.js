@@ -32,9 +32,8 @@ const LoginScreen = ({ history }) => {
         { email, password },
         config
       )
-      localStorage.setItem('authToken', data.token);
-      console.log(data.token)
-      history.push('/');
+      //localStorage.setItem('authToken', data.token);
+       history.push(`/${email.split('@')[0]}`);
     } catch (error) {
       console.error('Error details:', error);
       setError(error.response.data.error);
